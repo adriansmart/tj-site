@@ -50,7 +50,7 @@ function limitVec(vx: number, vy: number, max: number) {
 
 function updateBoids(boids: Boid[], w: number, h: number) {
   for (let i = 0; i < boids.length; i++) {
-    const b = boids[i]
+    const b = boids[i]!
 
     let sepX = 0, sepY = 0, sepCount = 0
     let aliVx = 0, aliVy = 0, aliCount = 0
@@ -58,7 +58,7 @@ function updateBoids(boids: Boid[], w: number, h: number) {
 
     for (let j = 0; j < boids.length; j++) {
       if (i === j) continue
-      const o = boids[j]
+      const o = boids[j]!
 
       let dx = o.x - b.x
       let dy = o.y - b.y
