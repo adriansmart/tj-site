@@ -1,4 +1,3 @@
-import { MongoClient } from 'mongodb'
 import type { Plugin } from 'vite'
 
 const MONGO_URI = 'mongodb://100.109.18.78:27017'
@@ -14,7 +13,8 @@ export function apiPlugin(): Plugin {
           return next()
         }
 
-        let client: MongoClient | undefined
+        const { MongoClient } = await import('mongodb')
+        let client: InstanceType<typeof MongoClient> | undefined
         try {
           client = new MongoClient(MONGO_URI, {
             connectTimeoutMS: 15000,
