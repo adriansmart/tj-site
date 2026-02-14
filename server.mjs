@@ -61,7 +61,7 @@ app.get('/api/symbol-counts', async (_req, res) => {
 app.use(express.static(join(__dirname, 'dist')))
 
 // SPA fallback — serve index.html for all other routes
-app.get('*', (_req, res) => {
+app.get('/{*splat}', (_req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
