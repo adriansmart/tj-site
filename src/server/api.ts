@@ -13,8 +13,9 @@ export function apiPlugin(): Plugin {
           return next()
         }
 
+        // @ts-ignore - mongodb is a dev/prod runtime dep, not needed at type-check time
         const { MongoClient } = await import('mongodb')
-        let client: InstanceType<typeof MongoClient> | undefined
+        let client: any
         try {
           client = new MongoClient(MONGO_URI, {
             connectTimeoutMS: 15000,
